@@ -55,8 +55,8 @@ app.use(formidable({
 require('./route')(app);
 
 // listen
-httpServer.listen(3003, () => {
-    console.log(' \033[42;1m Done \033[0m \033[1m Server is listening on port 3003 \033[0m');
+httpServer.listen(3000, () => {
+    console.log(' \033[42;1m Done \033[0m \033[1m Server is listening on port 3000 \033[0m');
 });
 httpsServer.listen(443, () => {
     console.log(' \033[42;1m Done \033[0m \033[1m Server is listening on port 443 \033[0m');
