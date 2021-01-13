@@ -33,7 +33,8 @@ body {
         width: 85%;
     }
     #avatarBox {
-        height: 50% !important;
+        height: 100px !important;
+        width: 100px !important;
     }
 }
 
