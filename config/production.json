@@ -1,0 +1,12 @@
+﻿{
+    "info": "题库 ---- 生产环境",
+    "db": {
+        "user": "root",
+        "pwd": "19831610833",
+        "host": "localhost",
+        "port": "27017",
+        "name": "questionBank",
+        "options": "authSource=admin"
+    },
+    "notFoundPage": "/404.html"
+}

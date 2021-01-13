@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="/public/usersJsonp"></script>
+<script>
+    window.thisquestionId = location.href.split('QuestionId=')[1];
+
+    // console.log(window.isLogin);
+    // console.log(window.isLogin);
+    // console.log(window.user);
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootsrap/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/detail.css">
+    <script src="../jQuery/jQuery.min.js"></script>
+    <script src="../bootsrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/detail-add.css">
+    <link rel="stylesheet" href="../nprogress/nprogress.css">
+    <script src="../art-template/template-web.js"></script>
+    <script src="../nprogress/nprogress.js"></script>
+    <title>QuestionBamk</title>
+</head>
+
+<body>
+    <script>
+        NProgress.start()
+    </script>
+    <!-- 小屏幕 -->
+    <nav class="mini">
+        <div class="miniTop ">
+            <a href="/html/index.html" class="back"><span class="glyphicon glyphicon-chevron-left"></span>返回</a> QuestionBank
+            <!-- <a href="#" class="back"></span>登录</a> QuestionBank -->
+        </div>
+        <div class="miniDown">
+
+
+            <div class="btn-group " id="q">
+                <button type="button" class="btn now pt">
+                  题目详情
+                </button>
+
+            </div>
+            <div class="btn-group " id="a">
+                <button type="button" class="btn pt tijm">
+                  查看题解
+                </button>
+
+            </div>
+            <div class="btn-group " id="pa">
+                <button type="button" class="btn pt">
+                  最优解
+                </button>
+
+            </div>
+            <div class="btn-group " id="ada">
+                <button type="button" class="btn pt">
+                  发布题解
+                </button>
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+        </div>
+        </div>
+
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- 大屏幕 -->
+    <nav class="navbar navbar-default  ">
+        <div class="container-fluid auto">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+
+
+                <a class="navbar-brand" href="/html/index.html">QuestionBank</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!-- 选中状态action -->
+                    <li><a href="/html/index.html">题库列表</a></li>
+
+                    <li><a href="/html/index-list.html">热门题解</a></li>
+
+                </ul>
+
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown admin">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理员<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/html/admin-question-add.html">题目发布</a></li>
+                            <li><a href="/html/admin-question-edit.html">题目管理</a></li>
+                            <li><a href="/html/admin-label.html">分类管理</a></li>
+                            <li><a href="/html/admin-users-edit.html">用户管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown teacher">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">教师<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/html/admin-question-add.html">题目发布</a></li>
+
+                            <li><a href="/html/admin-label.html">分类管理</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="userlogin">
+                        <a style="color: #64BF68;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">登录</span></a>
+                        <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">题目发布</a></li>
+                    <li><a href="#">题目管理</a></li>
+                    <li><a href="#">分类管理</a></li>
+                    <li><a href="#">用户管理</a></li>
+                </ul> -->
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+    <nav class="navbar navbar-default  auto">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active ptn"><a id="q" href="javascript:;">问题详情</a></li>
+                    <li class="ptn tijb"><a id="a" href="javascript:;">查看题解</a></li>
+                    <li class="ptn"><a id="pa" href="javascript:;">最优解</a></li>
+                    <li class="ptn"><a id="ada" href="javascript:;">发布题解</a></li>
+
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+    <div class="article">
+        <div id="contentBox">
+
+            <!-- 文章详情 -->
+
+            <!-- 题解编写 -->
+
+
+        </div>
+
+    </div>
+
+
+    <!-- 列表开始 -->
+
+    <!-- fontAwesome -->
+    <link rel="stylesheet" href="../makedown/assets/vendors/font-awesome/css/font-awesome.min.css">
+
+    <!-- editor -->
+    <link href="https://cdn.bootcss.com/simplemde/1.11.2/simplemde.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/simplemde/1.11.2/simplemde.min.js"></script>
+
+    <!-- highlight -->
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
+    <link href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" rel="stylesheet">
+
+    <!-- imgUpload -->
+    <script src="../makedown/assets/vendors/InlineAttachment-master/dist/inline-attachment.min.js"></script>
+    <script src="../makedown/assets/vendors/InlineAttachment-master/dist/codemirror-4.inline-attachment.min.js"></script>
+
+    <!-- createEditor -->
+    <script src="../makedown/assets/js/createEdtior.js"></script>
+
+    <script>
+        NProgress.done()
+    </script>
+    <script type="text/html" id="questionTpl">
+        <!-- 文章详情 -->
+        <div class="w1100 ">
+            <div class="container auto">
+                <div class="article-header">
+                    <h3 class="article-title">题号:{{question._id}}</h3>
+
+                    <h3 class="article-title">{{question.title}}</h3>
+
+
+                    <div class="article-info">
+                        <span>分类：</span> {{each question.category}}
+                        <span style="color: #64BF68;">
+                        {{$value.title}}
+                        </span> {{/each}}
+
+                    </div>
+                    <div class="article-info">
+                        <span>难度：</span>
+                        <span style="color: #64BF68;">
+                        {{question.difficulty.title}}
+                        </span>
+
+                    </div>
+                </div>
+                <div class="article-content">
+                    {{@question.description}}
+                </div>
+                <hr style='border-top: 1px dashed #ccc;'>
+                <div class="article-info" style='float: right;'>
+                    <span class="author action">{{question.author.username}}</span>
+                    <span>发布于{{question.publishDate.split('T')[0]}}</span>
+                    <span class="glyphicon glyphicon-eye-open" style='color:#444;'></span>
+                    <span>{{question.meta.views}}</span>
+                    <span id='questionlike' class="{{liked?'glyphicon glyphicon glyphicon-heart':'glyphicon glyphicon-heart-empty'}}" style="{{liked?'color: orange;cursor: pointer;':'color: #64BF68;cursor: pointer;'}}"></span>
+                    <span>{{question.meta.likes}}</span>
+
+                </div>
+            </div>
+
+        </div>
+    </script>
+    <script type="text/html" id="answerlistTpl">
+        <!-- 文章详情 -->
+        <div class="w1100 ">
+            <div class="container auto">
+
+                <!-- 评论盒子 -->
+                <div>
+
+                    <ul class="list-group auto">
+                        {{if answers.length!=0}} {{each answers}}
+                        <li class="list-group-item">
+                            <div class="comment-list">
+                                <div class="mb10 left">
+                                    <div class="article-info">
+                                        <span class="author">{{$value.author?$value.author.username:'无名'}}</span>
+                                        <span>{{$value.publishDate.split('T')[0]}}</span>
+                                        <span style='color:#64BF68'>{{$value.author?$value.author.role=='admin'?'管理员':$value.author.role=='teacher'?'老师':'学生':'学生'}}</span>
+                                    </div>
+                                    <div class="comment-content">
+                                        <a id='clickanswer' data-id='{{$value._id}}' href="javascript:;">{{$value.title}}</a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </li>
+                        {{/each}} {{/if}} {{if answers.length==0}}
+                        <li class="list-group-item">
+                            <div class="comment-list">
+                                未找到相关题解
+
+                            </div>
+                        </li>
+                        {{/if}}
+                    </ul>
+                    <nav aria-label="Page navigation " class="auto">
+                        <ul class="pagination ">
+                            <li>
+                                <a href="javascript:;" aria-label="Previous" onclick='changePageoflist({{page-1 || 1}})'>
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {{each pages}} {{if $value>=page-2 && $value
+                            <page-0+2}} <li><a href="javascript:;" onclick='changePageoflist({{$value}})'>{{$value}}</a></li>
+                                {{/if}} {{/each}}
+
+                                <li>
+                                    <a href="javascript:;" aria-label="Next" onclick='changePageoflist({{page+1>=pages.length?pages.length:page+1}})'>
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+    </script>
+    <script type="text/html" id="answerTpl">
+        <!-- 文章详情 -->
+        <div class="w1100 ">
+            <div class="container auto">
+                <div class="article-header">
+                    <h3 class="article-title">{{answer.title}}</h3>
+
+                </div>
+                <div class="article-content" style='overflow: hidden;'>
+                    {{@answer.content}}
+                    <hr style='border-top: 1px dashed #ccc;'>
+                    <div class="article-info" style='float: right;'>
+                        <span class="author action">{{answer.author?answer.author.username:'无名'}}</span>
+                        <span>发布于{{answer.publishDate.split('T')[0]}}</span>
+                        <span class="glyphicon glyphicon-eye-open" style='color:#444;'></span>
+                        <span>{{answer.meta.views}}</span>
+                        <span data-id='{{_id}}' id='answerlike' class="{{liked?'glyphicon glyphicon glyphicon-heart':'glyphicon glyphicon-heart-empty'}}" style="{{liked?'color: orange;cursor: pointer;':'color: #64BF68;cursor: pointer;'}}"></span>
+                        <span>{{answer.meta.likes}}</span>
+
+                    </div>
+                </div>
+
+
+                <div class="article-comment">
+                    <h4>评论</h4>
+
+                    <form class="comment-form" data-id='{{_id}}' id='commentform'>
+                        <textarea name='content' class="comment"></textarea>
+                        <div class="items">
+                            <input type="submit" value="提交">
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+            <!-- 评论盒子 -->
+            <div>
+
+                <ul class="list-group auto">
+                    {{each comment.comment}}
+                    <li class="list-group-item">
+                        <div class="comment-list">
+                            <div class="mb10 left">
+                                <div class="article-info">
+                                    <span class="author">
+
+                                        <img id='' class=".img-responsive .center-block img-circle" style="width: 20px;height:20px;object-fit: cover;" src="{{$value.author?$value.author.avatar?$value.author.avatar:'/images/default.png':'/images/default.png' ||'/images/default.png'}}" alt="...">
+                                    </span>
+
+                                    <span class="author">{{$value.author?$value.author.username:'无名'}}</span>
+                                    <span>{{$value.publishDate.split('T')[0]}}</span>
+
+                                </div>
+                                <div class="comment-content">
+                                    {{$value.content}}
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+                <nav aria-label="Page navigation " class="auto">
+                    <ul class="pagination ">
+                        <li>
+                            <a href="javascript:;" aria-label="Previous" onclick='changePage({{comment.page-1 || 1}},"{{answer._id}}")'>
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {{each comment.pages}} {{if $value>=comment.page-2 && $value
+                        <comment.page-0+2}} <li><a href="javascript:;" onclick='changePage({{$value}},"{{answer._id}}")'>{{$value}}</a></li>
+                            {{/if}} {{/each}}
+
+                            <li>
+                                <a href="javascript:;" aria-label="Next" onclick='changePage({{comment.page+1>=comment.pages.length?comment.pages.length:page+1}},"{{answer._id}}")'>
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </script>
+    <script type="text/html" id="answerTpl2">
+        <!-- 文章详情 -->
+        <div class="w1100 ">
+            <div class="container auto">
+                <div class="article-header">
+                    <h3 class="article-title">{{answer.title}}</h3>
+
+                </div>
+                <div class="article-content" style='overflow: hidden;'>
+                    {{@answer.content}}
+                    <hr style='border-top: 1px dashed #ccc;'>
+                    <div class="article-info" style='float: right;'>
+                        <span class="author action">{{answer.author?answer.author.username:'无名'}}</span>
+                        <span>发布于{{answer.publishDate.split('T')[0]}}</span>
+                        <span class="glyphicon glyphicon-eye-open" style='color:#444;'></span>
+                        <span>{{answer.meta.views}}</span>
+                        <span data-id='{{answer._id}}' id='answerlike' class="{{liked?'glyphicon glyphicon glyphicon-heart':'glyphicon glyphicon-heart-empty'}}" style="{{liked?'color: orange;cursor: pointer;':'color: #64BF68;cursor: pointer;'}}"></span>
+                        <span>{{answer.meta.likes}}</span>
+
+                    </div>
+                </div>
+
+
+                <div class="article-comment">
+                    <h4>评论</h4>
+
+                    <form class="comment-form" data-id='{{answer._id}}' id='commentform'>
+                        <textarea name='content' class="comment"></textarea>
+                        <div class="items">
+                            <input type="submit" value="提交">
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+            <!-- 评论盒子 -->
+            <div>
+
+                <ul class="list-group auto">
+                    {{each comment.comment}}
+                    <li class="list-group-item">
+                        <div class="comment-list">
+                            <div class="mb10 left">
+                                <div class="article-info">
+                                    <span><img id='' class=".img-responsive .center-block img-circle" style="width: 20px;height:20px;object-fit: cover;" src="{{$value.author?$value.author.avatar?$value.author.avatar:'/images/default.png':'/images/default.png' ||'/images/default.png'}}" alt="..."></span>
+
+
+
+                                    <span class="author">{{$value.author?$value.author.username:'无名'}}</span>
+                                    <span>{{$value.publishDate.split('T')[0]}}</span>
+
+                                </div>
+                                <div class="comment-content">
+                                    {{$value.content}}
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+                <nav aria-label="Page navigation " class="auto">
+                    {{if comment.pages.length>0}}
+                    <ul class="pagination ">
+                        <li>
+                            <a href="javascript:;" aria-label="Previous" onclick='changePage({{comment.page-1 || 1}},"{{answer._id}}")'>
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {{each comment.pages}} {{if $value>=comment.page-2 && $value
+                        <comment.page-0+2}} <li><a href="javascript:;" onclick='changePage({{$value}},"{{answer._id}}")'>{{$value}}</a></li>
+                            {{/if}} {{/each}}
+
+                            <li>
+                                <a href="javascript:;" aria-label="Next" onclick='changePage({{comment.page+1>=comment.pages.length?comment.pages.length:page+1}},"{{answer._id}}")'>
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                    </ul>
+                    {{/if}}
+                </nav>
+
+            </div>
+        </div>
+    </script>
+    <script type="text/html" id="addTpl">
+        <!-- 题解编写 -->
+        <div class=" auto .container">
+            <div class="row ">
+                <form class=" col-md-8 user-edit" id="createform" style="background-color: #fff;">
+                    <div class="info" style='text-align:center;background-color:#f2dede;'></div>
+
+                    <div class="form-group">
+                        <label for="exampleInputFile">题号</label>
+
+                        <input id="questionId" name="id" type="name" class="form-control" placeholder="请输入题目">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">标题</label>
+
+                        <input name="title" type="name" class="form-control" id="titleBox" placeholder="请输入题目">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>内容</label>
+                        <textarea name="content" class="form-control" id="editor"></textarea>
+                    </div>
+                    <button style="background-color: #64BF68;border-radius: 4px;color: #fff;" type="submit" class="btn btn-default">保存</button>
+                </form>
+                <div class="col-md-4 user-edit_right">
+
+                    <div class="col-xs-12 white">
+                        <h1 style="text-align:center;">Markdown Guide</h1>
+                        <h4>Emphasis</h4>
+                        <pre>**<strong>bold</strong>**
+        *<em>italics</em>*
+        ~~<strike>strikethrough</strike>~~</pre>
+                        <h4>Headers</h4>
+                        <pre># Big header
+        ## Medium header
+        ### Small header
+        #### Tiny header</pre>
+                        <h4>Lists</h4>
+                        <pre>* Generic list item
+        * Generic list item
+        * Generic list item
+        
+        1. Numbered list item
+        2. Numbered list item
+        3. Numbered list item</pre>
+                        <h4>Links</h4>
+                        <pre>[Text to display](http://www.example.com)</pre>
+                        <h4>Quotes</h4>
+                        <pre>&gt; This is a quote.
+        &gt; It can span multiple lines!</pre>
+                        <h4>Images &nbsp; <small>Need to upload an image? <a href="https://imgur.com/" target="_blank">Imgur</a> has a great interface.</small></h4>
+                        <pre>![](http://www.example.com/image.jpg)</pre>
+                        <h4>Tables</h4>
+                        <pre>
+        | Column 1 | Column 2 | Column 3 |
+        | -------- | -------- | -------- |
+        | John     | Doe      | Male     |
+        | Mary     | Smith    | Female   |
+        
+        <em>Or without aligning the columns...</em>
+        
+        | Column 1 | Column 2 | Column 3 |
+        | -------- | -------- | -------- |
+        | John | Doe | Male |
+        | Mary | Smith | Female |
+        </pre>
+                        <h4>Displaying code</h4>
+                        <pre>`var example = "hello!";`
+        
+        <em>Or spanning multiple lines...</em>
+        
+        ```
+        var example = "hello!";
+        alert(example);
+        ```</pre>
+                        <footer>Provided for use with <a href="https://sparksuite.github.io/simplemde-markdown-editor" target="_blank">SimpleMDE</a></footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script src="../js/answer-head.js"></script>
+    <script src="../js/detail-answer.js"></script>
+</body>
+
+</html>

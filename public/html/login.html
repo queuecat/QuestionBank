@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="../bootsrap/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../nprogress/nprogress.css">
+    <script src="../art-template/template-web.js"></script>
+    <script src="../nprogress/nprogress.js"></script>
+    <title>QuestionBamk</title>
+</head>
+
+<body>
+    <script>
+        NProgress.start()
+    </script>
+    <div class="login-body">
+        <div class="login-container">
+            <h4 class="title">QuestionBank登录</h4>
+            <div class="login">
+                <div class="tips" style="text-align: center;"></div>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>邮件</label>
+                        <input name="email" type="email" class="form-control" placeholder="请输入邮件地址">
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input name="password" type="password" class="form-control" placeholder="请输入密码">
+                    </div>
+                    <div class="form-inline form-group">
+                        <div class="form-group ">
+                            <label>验证码</label>
+                            <input name="verification" type="text" class="form-control" id="exampleInputName2" placeholder="请输入验证码">
+                            <label style="vertical-align: middle;" id="captcha">Name</label>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">登录</button>
+                    <a href="./register.html"><input class="btn btn-default" type="button" value="注册"></a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../jQuery/jQuery.min.js"></script>
+    <script src="../bootsrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+    <!-- <script src="../js/login.js"></script> -->
+    <!-- 设置提交事件，检测提交的表单是否填写完成 -->
+
+    <!-- 引入验证码 -->
+    <script src="/svg/captcha.js"></script>
+    <script>
+        NProgress.done()
+    </script>
+</body>
+
+</html>

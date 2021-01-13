@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="/public/usersJsonp"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootsrap/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="../jQuery/jQuery.min.js"></script>
+    <script src="../bootsrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../nprogress/nprogress.css">
+    <script src="../art-template/template-web.js"></script>
+    <script src="../nprogress/nprogress.js"></script>
+    <title>QuestionBamk</title>
+</head>
+
+<body>
+    <script>
+        NProgress.start()
+    </script>
+    <!-- 小屏幕 -->
+    <nav class="mini">
+        <div class="miniTop ">
+            <!-- <a href="#" class="back"><span class="glyphicon glyphicon-chevron-left"></span>返回</a> QuestionBank -->
+            <a href="/html/login.html" class="back"></span>登录</a> QuestionBank
+        </div>
+        <div class="miniDown">
+            <!-- Single button -->
+            <div class="btn-group">
+                <button class="btn btn-default dropdown-toggle " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <span id="ptcontent">默认排序</span>
+                    <span class="caret"></span>
+                  </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="javascript:;" id="pt2">热度排行</a></li>
+                    <li><a href="javascript:;" id="pt1">好评如潮</a></li>
+                    <li><a href="javascript:;" id="pt0">最新发布</a></li>
+                </ul>
+
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  标签选择 <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu list-group" id="minifenleiBox">
+
+                    <!-- 小屏幕分类盒子 -->
+
+                </ul>
+            </div>
+
+
+
+
+
+            <div class="btn-group right">
+                <a id="searchbtn" href="javascript:;" class="search"><span class="glyphicon glyphicon-search"></span></a>
+            </div>
+            <div class="btn-group right searchinp">
+                <input id="minisearchinput" type="text" class="form-control" placeholder="Search">
+            </div>
+        </div>
+
+
+
+        </div>
+        </div>
+
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- 大屏幕 -->
+    <nav class="navbar navbar-default  ">
+        <div class="container-fluid auto">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+
+
+                <a class="navbar-brand" href="/html/index.html">QuestionBank</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!-- 选中状态为.active -->
+                    <li class="active"><a href="/html/index.html">题库列表</a></li>
+
+                    <li><a href="/html/index-list.html">热门题解</a></li>
+
+                </ul>
+
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown admin">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理员<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/html/admin-question-add.html">题目发布</a></li>
+                            <li><a href="/html/admin-question-edit.html">题目管理</a></li>
+                            <li><a href="/html/admin-label.html">分类管理</a></li>
+                            <li><a href="/html/admin-users-edit.html">用户管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown teacher">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">教师<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/html/admin-question-add.html">题目发布</a></li>
+
+                            <li><a href="/html/admin-label.html">分类管理</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="userlogin">
+                        <a style="color: #64BF68;" href="/html/login.html" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">登录</span></a>
+
+                        <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="#">题目发布</a></li>
+            <li><a href="#">题目管理</a></li>
+            <li><a href="#">分类管理</a></li>
+            <li><a href="#">用户管理</a></li>
+        </ul> -->
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+    <nav class="navbar navbar-default  auto">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active sort"><a id="sortviews" href="javascript:;">热度排行</a></li>
+                    <li class="sort"><a id="sortnandu" href="javascript:;">好评如潮</a></li>
+                    <li class="sort"><a id="sortnew" href="javascript:;">最新发布</a></li>
+
+                </ul>
+                <form class="navbar-form navbar-right " id="searchform">
+                    <div class="form-group">
+                        <input id="searchinput" type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default maxsearch"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="fenleicontent">难度选择</span> <span class="caret"></span></a>
+                        <ul class="dropdown-menu" id="nanduBox">
+                            <!-- 难度盒子 -->
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- 选中 -->
+    <!-- <div id="fenleilistBox"> -->
+
+    <!-- 选中分类盒子 -->
+    <!-- </div> -->
+
+
+
+
+    <nav class="navbar navbar-default  auto">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav" id="fenleilistBox">
+
+
+                    <!-- <li><a href="javascript:;">{{$value}} <span data-index='{{$index}}' style="position: relative; top: 3px; " class="glyphicon glyphicon-remove "></span> </a></li> -->
+
+
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+
+    <!-- 列表开始 -->
+
+    <div class="container auto ">
+        <div id="listBox">
+            <!-- 列表盒子 -->
+        </div>
+
+        <div class=" col-md-4 container width " id='label'>
+            <h4 style="padding-bottom: 10px;">内容分类</h4>
+
+
+            <div id="fenleiBox">
+                <!-- 分类盒子 -->
+            </div>
+
+
+
+
+
+
+
+
+            <!-- <ul class="list-group col-md-6 ">
+                <h4>内容分类</h4>
+                <div class='checkbox'>
+                    <label>
+                          <input type='checkbox'> Check me out
+                        </label>
+                </div>
+
+
+                <div class='checkbox'>
+                    <label>
+                          <input type='checkbox'> Check me out
+                        </label>
+                </div>
+
+
+                <div class='checkbox'>
+                    <label>
+                          <input type='checkbox'> Check me out
+                        </label>
+                </div>
+
+            </ul> -->
+
+        </div>
+
+
+
+    </div>
+
+    <nav aria-label="Page navigation " class="auto " id="pageBox">
+        <!-- 页数 -->
+    </nav>
+
+    <script>
+        NProgress.done()
+    </script>
+    <script type="text/html" id="questionlistTpl">
+        <ul class="list-group col-md-8 ">
+            {{if questions.length!=0}} {{each questions}}
+            <li class="list-group-item ">
+                <div class="article-info">
+                    <span class="author" style='color:orange'>{{$value.author.username}}</span>
+                    <span>{{$value.publishDate.split('T')[0]}}</span>
+                    <span style='color:#64BF68'>{{$value.author.role=='admin'?'管理员':$value.author.role=='teacher'?'老师':'学生'}}</span>
+                </div>
+                <a href="/html/detail.html?questionId={{$value._id}}"><span>{{$value.title}}</span></a>
+                <ul>
+
+                    <li>浏览量：<span>{{$value.meta.views}}</span></li>
+
+                    <li>点赞：<span>{{$value.meta.likes}}</span></li>
+                </ul>
+            </li>
+            {{/each}} {{/if}} {{if questions.length==0}}
+            <li class="list-group-item ">
+
+                <a href="javascript:;"><span>未找到相关内容</span></a>
+
+            </li>
+            {{/if}}
+        </ul>
+    </script>
+    <script type="text/html" id="pageTpl">
+        <ul class="pagination ">
+            <li>
+                <a href="javascript:;" aria-label="Previous" onclick='changePageoflist({{page-1 || 1}},"/public/questions")'>
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {{each pages}} {{if $value>=page-2 && $value
+            <page-0+2}} <li><a href="javascript:;" onclick='changePageoflist({{$value}},"/public/questions")'>{{$value}}</a></li>
+                {{/if}} {{/each}}
+
+                <li>
+                    <a href="javascript:;" aria-label="Next" onclick='changePageoflist({{page+1>=pages.length?pages.length:page+1}},"/public/questions")'>
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+        </ul>
+        </nav>
+    </script>
+    <script type="text/html" id="nanduTpl">
+        <li><a data-id='000' href="javascript:;" value='000'>全部</a></li>
+        {{each data}}
+        <li><a data-id='{{$value._id}}' href="javascript:;" value='{{$value.title}}'>{{$value.title}}</a></li>
+        {{/each}}
+    </script>
+    <script type="text/html" id="fenleiTpl">
+
+
+        <div class='checkbox col-md-6' style="display: none;">
+            <!-- <label>
+                          <input type='checkbox'> Check me out
+                        </label> -->
+        </div>
+        {{each data}}
+        <div class='checkbox col-md-6'>
+            <label>
+                          <input data-id='{{$value._id}}' type='checkbox' value='{{$value.title}}'> {{$value.title}}
+                        </label>
+        </div>
+        {{/each}}
+
+    </script>
+    <script type="text/html" id="fenleilistTpl">
+
+
+
+        {{each data}}
+        <li><a href="javascript:;" style='cursor: default;'>{{$value}} <span onclick='outlist("{{$value}}")' style="position: relative; top: 3px;cursor: pointer; " class="glyphicon glyphicon-remove "></span> </a></li>
+        {{/each}}
+
+
+
+
+    </script>
+    <script type="text/html" id="minifenleiTpl">
+        {{each data}}
+        <li class="list-group-item " data-id='{{$value._id}}'>
+            {{$value.title}}
+
+        </li>
+        {{/each}}
+    </script>
+    <script src="../js/home-head.js"></script>
+    <script src="../js/home.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="/public/usersJsonp"></script>
+<script>
+    if (!window.isLogin) {
+        location.href = '/html/login.html'
+    }
+    if (window.user.role == 'student') {
+        alert('此页面拒绝学生访问');
+        location.href = '/html/index.html';
+    }
+    // console.log(window.isLogin);
+    // console.log(window.user);
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/detail-add.css">
+    <link rel="stylesheet" href="../bootsrap/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="../jQuery/jQuery.min.js"></script>
+    <script src="../bootsrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../nprogress/nprogress.css">
+    <script src="../art-template/template-web.js"></script>
+    <script src="../nprogress/nprogress.js"></script>
+    <title>QuestionBamk</title>
+</head>
+
+<body>
+    <script>
+        NProgress.start()
+    </script>
+
+
+    <!-- 小屏幕 -->
+    <nav class="mini">
+        <div class="miniTop ">
+            <a href="/html/index.html" class="back"><span class="glyphicon glyphicon-chevron-left"></span>返回</a> QuestionBank
+            <!-- <a href="#" class="back"></span>登录</a> QuestionBank -->
+        </div>
+        <div class="miniDown">
+
+            <div class="btn-group">
+                <!-- 选中状态为.now -->
+                <button onclick="jump('/html/user-index.html')" class="btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                个人中心
+                
+              </button>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-default dropdown-toggle " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                题目管理
+                <span class="caret"></span>
+              </button>
+                <ul class="dropdown-menu mininav" aria-labelledby="dropdownMenu1">
+
+                    <li><a href="/html/admin-question-add.html">题目发布</a></li>
+                    <li><a href="/html/admin-label.html">分类管理</a></li>
+                </ul>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- 大屏幕 -->
+    <nav class="navbar navbar-default  ">
+        <div class="container-fluid auto">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+
+
+                <a class="navbar-brand" href="#">QuestionBank</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!-- 选中状态为.active -->
+                    <li><a href="/html/index.html">题库列表</a></li>
+
+                    <li><a href="/html/index-list.html">热门题解</a></li>
+
+                </ul>
+
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown admin">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理员<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/html/admin-question-add.html">题目发布</a></li>
+                            <li><a href="/html/admin-question-edit.html">题目管理</a></li>
+                            <li><a href="/html/admin-label.html">分类管理</a></li>
+                            <li><a href="/html/admin-users-edit.html">用户管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown teacher">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">教师<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/html/admin-question-add.html">题目发布</a></li>
+
+                            <li><a href="/html/admin-label.html">分类管理</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="userlogin">
+                        <a style="color: #64BF68;" href="/html/login.html" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">登录</span></a>
+
+                        <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">题目发布</a></li>
+                <li><a href="#">题目管理</a></li>
+                <li><a href="#">分类管理</a></li>
+                <li><a href="#">用户管理</a></li>
+            </ul> -->
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+
+
+    <nav class="navbar navbar-default  auto">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+            <ul class="nav navbar-nav ">
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/html/user-index.html">个人信息</a></li>
+                        <li><a href="/html/user-list.html">我的题解</a></li>
+                        <li><a href="/html/detail-add.html">发布题解</a></li>
+                        <li><a href="/html/detail-add.html" onclick="jumpPost('/userAction/logout')">退出登录</a></li>
+
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">网站管理<span class="caret"></span></a>
+                    <ul class="dropdown-menu" id="bignav">
+                        <li><a href="/html/admin-question-add.html">题目发布</a></li>
+                        <li><a href="/html/admin-label.html">分类管理</a></li>
+                        <li><a href="/html/admin-users-edit.html">用户管理</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+
+        </div>
+        <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+
+    <div class=" auto .container">
+        <div class="row ">
+            <div id="formBox">
+                <!-- 表单信息 -->
+
+            </div>
+
+
+
+
+            <div class="col-md-4 user-edit_right">
+
+                <div class="white" style="padding:5px;">
+                    <ul class="list-group" id="questionBox">
+
+                        <!-- 题目列表 -->
+                    </ul>
+                    <nav aria-label="Page navigation" style="margin-left:5px;">
+                        <ul class="pagination" id="pageBox">
+                            <!-- 页数 -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fontAwesome -->
+    <link rel="stylesheet" href="../makedown/assets/vendors/font-awesome/css/font-awesome.min.css">
+
+    <!-- editor -->
+    <link href="https://cdn.bootcss.com/simplemde/1.11.2/simplemde.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/simplemde/1.11.2/simplemde.min.js"></script>
+
+    <!-- highlight -->
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
+    <link href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" rel="stylesheet">
+
+    <!-- imgUpload -->
+    <script src="../makedown/assets/vendors/InlineAttachment-master/dist/inline-attachment.min.js"></script>
+    <script src="../makedown/assets/vendors/InlineAttachment-master/dist/codemirror-4.inline-attachment.min.js"></script>
+
+    <!-- createEditor -->
+    <script src="../makedown/assets/js/createEdtior.js"></script>
+    <script>
+        NProgress.done()
+    </script>
+    <!-- 题目列表 -->
+    <script type='text/html' id="questionTpl">
+        <li class="list-group-item">
+            <div class="input-group">
+                <input id='addnanduInp' type="text" class="form-control" placeholder="搜索题目" aria-describedby="basic-addon2">
+                <span style="position: relative;top: 0px;" class="input-group-addon glyphicon glyphicon-search" id="basic-addon2" onclick="search(this)"></span>
+            </div>
+        </li>
+
+
+        {{each questions}}
+        <li class="list-group-item">
+            <div style="width: 100%; overflow: hidden;">
+                <div style="float: left;">{{$value.title}}</div>
+                <div style="float: right;">
+                    <div id='xiugai' class="btn-group btn-group-xs" role="group" aria-label="..." data-id='{{$value._id}}'><button type="button" class="btn btn-success">修改</button></div>
+                    <div id='shanchu' class="btn-group btn-group-xs" role="group" aria-label="..." data-id='{{$value._id}}'><button type="button" class="btn btn-danger">删除</button></div>
+                </div>
+            </div>
+        </li>
+
+        {{/each}}
+    </script>
+    <!-- 页数 -->
+    <script type='text/html' id="pageTpl">
+        <li>
+            <a href="javascript:;" aria-label="Previous" onclick='changePage({{page-1 || 1}})'>
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {{each pages}} {{if $value>=page-2 && $value
+        <page-0+2}} <li><a href="javascript:;" onclick='changePage({{$value}})'>{{$value}}</a></li>
+            {{/if}} {{/each}}
+
+            <li>
+                <a href="javascript:;" aria-label="Next" onclick='changePage({{page+1>=pages.length?pages.length:page+1}})'>
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+
+
+
+    </script>
+    <!-- 创建表 -->
+    <script type="text/html" id="createFormTpl">
+        <form class=" col-md-8 user-edit" id="questionForm">
+            <div class="info" style='text-align:center;background-color:#f2dede;'></div>
+
+            <h3>创建题目</h3>
+            <!-- <div class="form-group" style="text-align: center; width: 100%;">
+        <img class=".img-responsive .center-block img-thumbnail" style="width: 80%;" src="../images/placeholder.png" alt="...">
+
+    </div> -->
+            <div class="form-group">
+                <label for="exampleInputFile">题目</label>
+
+                <input name='title' type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入题目">
+
+            </div>
+            <div class="form-group">
+                <label>类型</label>
+                <div class="checkbox" id="leixingBox">
+
+                    {{each leixing}}
+                    <label data-id='{{$value._id}}'>
+
+                <input type="checkbox"> {{$value.title}}
+
+              </label> {{/each}}
+
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>难度</label>
+                <select name="difficulty" class="form-control">
+                    {{each nandu}}
+                    <option  value="{{$value._id}}">{{$value.title}}</option>
+            
+                    {{/each}}
+            </select>
+            </div>
+            <div class="form-group">
+                <label>内容</label>
+                <textarea class="form-control" id="editor"></textarea>
+            </div>
+            <button style="background-color: #64BF68;border-radius: 4px;color: #fff;" type="submit" class="btn btn-default">新建</button>
+        </form>
+    </script>
+
+    <!-- 修改表 -->
+    <script type='text/html' id="EditFormTpl">
+        <form class=" col-md-8 user-edit" id="questionEditForm" data-id='{{_id}}'>
+            <div class="info" style='text-align:center;background-color:#f2dede;'></div>
+
+            <h3>修改题目</h3>
+
+            <div class="form-group">
+                <label for="exampleInputFile">题目</label>
+
+                <input name='title' value='{{question.title}}' type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入题目">
+
+            </div>
+            <div class="form-group">
+                <label>类型</label>
+                <div class="checkbox" id="leixingBox">
+
+                    <!-- {{each leixing}}
+                <label data-id='{{$value._id}}'>
+
+                <input type="checkbox"> {{$value.title}}
+
+              </label> {{/each}} -->
+                    <% for( i = 0; i < leixing.length; i++) { %>
+                        <label data-id='<%=leixing[i]._id%>'>
+                  
+                    <input type="checkbox" <%for( j = 0; j < question.category.length; j++) {%>
+                        <%= leixing[i]._id==question.category[j]._id?'checked="checked"':''%>
+                        <%}%>
+                        
+                    
+                       
+                        
+                    > 
+                    <%=leixing[i].title%>
+                  
+                </label>
+                        <%}%>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>难度</label>
+                <select name="difficulty" class="form-control" id="nanduBox">
+                {{each nandu}}
+                <option {{question.difficulty._id==$value._id?'selected':''}} value="{{$value._id}}">{{$value.title}}</option>
+        
+                {{/each}}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>内容</label>
+                <textarea class="form-control" id="editor"></textarea>
+            </div>
+            <button style="background-color: #64BF68;border-radius: 4px;color: #fff;" type="submit" class="btn btn-default">保存</button>
+        </form>
+    </script>
+
+
+    <script src="../js//admin-question-edit.js"></script>
+    <script src="../js/admin-head.js"></script>
+</body>
+
+</html>

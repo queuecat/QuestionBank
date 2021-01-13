@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="/public/usersJsonp"></script>
+<script>
+    if (!window.isLogin) {
+        location.href = '/html/login.html'
+    }
+
+    // console.log(window.isLogin);
+    // console.log(window.user);
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/user-index.css">
+    <link rel="stylesheet" href="../bootsrap/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/detail.css">
+    <script src="../jQuery/jQuery.min.js"></script>
+    <script src="../bootsrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../nprogress/nprogress.css">
+    <script src="../art-template/template-web.js"></script>
+    <script src="../nprogress/nprogress.js"></script>
+    <title>QuestionBamk</title>
+</head>
+
+<body>
+    <script>
+        NProgress.start()
+    </script>
+
+    <!-- 小屏幕 -->
+    <nav class="mini">
+        <div class="miniTop ">
+            <a href="/html/index.html" class="back"><span class="glyphicon glyphicon-chevron-left"></span>返回</a> QuestionBank
+            <!-- <a href="#" class="back"></span>登录</a> QuestionBank -->
+        </div>
+        <div class="miniDown">
+
+
+
+
+        </div>
+        <div class="btn-group ">
+            <button type="button" class="btn now" onclick="jump('/html/user-index.html')">
+      个人信息
+    </button>
+
+        </div>
+        <div class="btn-group ">
+            <button type="button" class="btn " onclick="jump('/html/user-list.html')">
+      我的题解
+    </button>
+
+        </div>
+        <div class="btn-group ">
+            <button type="button" class="btn " onclick="jump('/html/detail-add.html')">
+      发布题解
+    </button>
+
+        </div>
+
+
+
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- 大屏幕 -->
+    <nav class="navbar navbar-default  ">
+        <div class="container-fluid auto">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+
+
+                <a class="navbar-brand" href="/html/index.html">QuestionBank</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!-- 选中状态action -->
+                    <li><a href="/html/index.html">题库列表</a></li>
+
+                    <li><a href="/html/index-list.html">热门题解</a></li>
+
+                </ul>
+
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown admin">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理员<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/html/admin-question-add.html">题目发布</a></li>
+                            <li><a href="/html/admin-question-edit.html">题目管理</a></li>
+                            <li><a href="/html/admin-label.html">分类管理</a></li>
+                            <li><a href="/html/admin-users-edit.html">用户管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown teacher">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">教师<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/html/admin-question-add.html">题目发布</a></li>
+
+                            <li><a href="/html/admin-label.html">分类管理</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="userlogin">
+                        <a style="color: #64BF68;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">登录</span></a>
+                        <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">题目发布</a></li>
+                <li><a href="#">题目管理</a></li>
+                <li><a href="#">分类管理</a></li>
+                <li><a href="#">用户管理</a></li>
+            </ul> -->
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+
+    <nav class="navbar navbar-default  auto">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/html/user-index.html">个人信息</a></li>
+                    <li><a href="/html/user-list.html">我的题解</a></li>
+                    <li><a href="/html/detail-add.html">发布题解</a></li>
+
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+    <div class=" auto .container">
+        <div class="row ">
+            <form class=" col-md-6 user-edit" id="userEditBox">
+                <!-- 用户信息 -->
+            </form>
+            <div class="col-md-6 user-edit_right">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">站点内容统计：</h3>
+                    </div>
+                    <ul class="list-group" id="countBox">
+                        <!-- 统计 -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 user-edit_right">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">修改密码</h3>
+                    </div>
+                    <form class="  user-edit" id="passwordBox">
+                        <div class="info" style='text-align:center;background-color:#f2dede;'></div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">新密码</label>
+                            <input name="newPwd" type="password" class="form-control" placeholder="NewPassword">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">旧密码</label>
+                            <input name="oldPwd" type="password" class="form-control" placeholder="OldPassword">
+                        </div>
+
+                        <button style="background-color: #64BF68;border-radius: 4px;color: #fff;" type="submit" class="btn btn-default">修改</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        NProgress.done()
+    </script>
+    <script type="text/html" id="countTpl">
+        <li class="list-group-item" id="post">发布<strong>{{answers.length}}</strong>篇文章</li>
+        <li class="list-group-item" id="categoryCount">总浏览量<strong>{{views}}</strong></li>
+        <li class="list-group-item" id="commentCount">累计获赞<strong>{{likes}}</strong></li>
+    </script>
+    <script type="text/html" id="userEditTpl">
+        <div class="info1" style='text-align:center;background-color:#f2dede;'></div>
+
+        <div class="form-group" style="text-align: center; width: 100%;">
+            <img id='avatarBox' class=".img-responsive .center-block img-circle" style="width: 50%;max-width: 150px;height:150px;object-fit: cover;" src="{{avatar ||'/images/default.png'}}" alt="...">
+
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">用户名</label>
+            <input name='username' value='{{username}}' type="text" class="form-control" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">邮箱</label>
+            <input name='email' value='{{email}}' type="text" class="form-control" placeholder="Email">
+        </div>
+        <!-- <div class="form-group">
+    <label for="exampleInputPassword1">密码</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+</div> -->
+
+
+
+        <div class="form-group">
+            <label for="exampleInputFile">上传头像</label>
+
+            <input type="file" id="avatar">
+            <input id='avatarH' value='{{avatar ||"/images/default.png"}}' type="hidden" name="avatar">
+        </div>
+
+        <button style="background-color: #64BF68;border-radius: 4px;color: #fff;" type="submit" class="btn btn-default">保存</button>
+    </script>
+    <script src="../js/index-head.js"></script>
+    <script src="../js/user-index.js"></script>
+</body>
+
+</html>

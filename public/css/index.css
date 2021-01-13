@@ -1,0 +1,207 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #f5f5ff;
+}
+
+@media screen and (min-width: 550px) {
+    .mini {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .navbar {
+        display: none;
+    }
+    .auto {
+        width: 95% !important;
+    }
+    .list-group .list-group-item {
+        padding: 1.0rem;
+    }
+    .list-group-item a span {
+        font-size: 15px;
+    }
+    .list-group-item li {
+        font-size: 8px;
+    }
+    #label {
+        display: none;
+    }
+}
+
+
+/* 小屏幕top */
+
+.auto {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.mini {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 10px;
+    /* overflow: hidden; */
+}
+
+.miniTop {
+    font-size: 16px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+}
+
+.back {
+    position: absolute;
+    left: 0;
+    padding-left: 10px;
+    color: #64BF68;
+    /* display: none; */
+}
+
+.miniDown {
+    position: relative;
+}
+
+.btn {
+    border-radius: 0;
+    border: none;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.searchinp {
+    width: 30%;
+    top: -5px;
+}
+
+.searchinp input {
+    border-radius: 0;
+}
+
+.search {
+    display: inline-block;
+    position: relative;
+    background-color: #64BF68;
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    line-height: 32px;
+    color: #fff;
+    top: -4px;
+}
+
+.form-control {
+    display: inline;
+}
+
+
+/* 小屏幕top */
+
+
+/* 大屏幕 */
+
+.navbar {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 10px;
+}
+
+.navbar-default .navbar-nav .active a {
+    background-color: #fff;
+    border-bottom: 2px solid #41b146;
+}
+
+.maxsearch {
+    background-color: #41b146;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.maxsearch:hover {
+    background-color: #58c55d;
+    color: #fff;
+}
+
+
+/* 列表 */
+
+.list-group-item {
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, .04);
+    padding: 1.5rem;
+}
+
+.list-group-item a {
+    font-size: 20px;
+    display: block;
+    color: #000;
+    text-decoration: none;
+}
+
+.list-group-item ul {
+    padding-left: 0;
+    overflow: hidden;
+}
+
+.list-group-item li {
+    float: left;
+    width: 30%;
+    color: #797979;
+}
+
+.dropdown-menu .list-group-item {
+    margin: 0 5px;
+}
+
+.list-group-item .ok {
+    color: #41b146;
+}
+
+.list-group .checkbox {
+    padding: 10px 0;
+}
+
+.width {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 10px;
+}
+
+.container.width {
+    margin-top: 10px;
+}
+
+.checkbox.col-md-6 {
+    margin-bottom: 20px;
+}
+
+.list-group-item li {
+    list-style: none;
+}
+
+.CodeMirror-scroll {
+    max-height: 300px;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #41b146;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover {
+    background-color: #fff;
+}
+
+.navbar {
+    min-height: 0;
+}

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="/public/usersJsonp"></script>
+<script>
+    if (!window.isLogin) {
+        location.href = '/html/login.html'
+    }
+    if (window.user.role == 'student') {
+        alert('此页面拒绝学生访问');
+        location.href = '/html/index.html';
+    }
+    // console.log(window.isLogin);
+    // console.log(window.user);
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/detail-add.css">
+    <link rel="stylesheet" href="../bootsrap/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="../jQuery/jQuery.min.js"></script>
+    <script src="../bootsrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../nprogress/nprogress.css">
+    <script src="../nprogress/nprogress.js"></script>
+    <script src="../art-template/template-web.js"></script>
+    <title>QuestionBamk</title>
+</head>
+
+<body>
+    <script>
+        NProgress.start()
+    </script>
+
+
+    <!-- 小屏幕 -->
+    <nav class="mini">
+        <div class="miniTop ">
+            <a href="#" class="back"><span class="glyphicon glyphicon-chevron-left"></span>返回</a> QuestionBank
+            <!-- <a href="#" class="back"></span>登录</a> QuestionBank -->
+        </div>
+        <div class="miniDown">
+
+            <div class="btn-group">
+                <!-- 选中状态为.now -->
+                <button onclick="jump('/html/user-index.html')" class="btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    个人中心
+                    
+                  </button>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-default dropdown-toggle " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    题目管理
+                    <span class="caret"></span>
+                  </button>
+                <ul class="dropdown-menu mininva" aria-labelledby="dropdownMenu1">
+
+                    <li><a href="/html/admin-question-add.html">题目发布</a></li>
+                    <li><a href="/html/admin-label.html">分类管理</a></li>
+                </ul>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- 大屏幕 -->
+    <nav class="navbar navbar-default  ">
+        <div class="container-fluid auto">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+
+
+                <a class="navbar-brand" href="#">QuestionBank</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!-- 选中状态为.active -->
+                    <li><a href="/html/index.html">题库列表</a></li>
+
+                    <li><a href="/html/index-list.html">热门题解</a></li>
+
+                </ul>
+
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown admin">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理员<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/html/admin-question-add.html">题目发布</a></li>
+                            <li><a href="/html/admin-question-edit.html">题目管理</a></li>
+                            <li><a href="/html/admin-label.html">分类管理</a></li>
+                            <li><a href="/html/admin-users-edit.html">用户管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown teacher">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">教师<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/html/admin-question-add.html">题目发布</a></li>
+
+                            <li><a href="/html/admin-label.html">分类管理</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="userlogin">
+                        <a style="color: #64BF68;" href="/html/login.html" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">登录</span></a>
+
+                        <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">题目发布</a></li>
+                    <li><a href="#">题目管理</a></li>
+                    <li><a href="#">分类管理</a></li>
+                    <li><a href="#">用户管理</a></li>
+                </ul> -->
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+
+    <nav class="navbar navbar-default  auto">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+            <ul class="nav navbar-nav ">
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/html/user-index.html">个人信息</a></li>
+                        <li><a href="/html/user-list.html">我的题解</a></li>
+                        <li><a href="/html/detail-add.html">发布题解</a></li>
+                        <li><a href="/html/detail-add.html" onclick="jumpPost('/userAction/logout')">退出登录</a></li>
+
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">网站管理<span class="caret"></span></a>
+                    <ul class="dropdown-menu" id="bignav">
+                        <li><a href="/html/admin-question-edit.html">题目管理</a></li>
+                        <li><a href="/html/admin-label.html">分类管理</a></li>
+                        <li><a href="/html/admin-users-edit.html">用户管理</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+
+        </div>
+        <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+
+    <div class=" auto .container">
+        <div class="row ">
+
+            <div class="col-md-6 user-edit_righ">
+
+                <div class="white" style="padding:5px;">
+                    <h4 style="text-align: center;">难度分类</h4>
+
+                    <ul class="list-group" id="nanduBox">
+
+                        <!-- 难度分类模板区域 -->
+
+                    </ul>
+
+                </div>
+            </div>
+            <div class="col-md-6 user-edit_righ">
+
+                <div class="white" style="padding:5px;">
+                    <h4 style="text-align: center;">类型分类</h4>
+
+
+                    <ul class="list-group" id="leixingBox">
+
+                        <!-- 类型分类列表 -->
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        NProgress.done()
+    </script>
+    <script type="text/html" id="nanduTpl">
+
+        <li class="list-group-item">
+            <div class="input-group">
+                <input id='addnanduInp' type="text" class="form-control" placeholder="添加分类" aria-describedby="basic-addon2">
+                <span style="position: relative;top: 0px;" class="input-group-addon glyphicon glyphicon-plus" id="basic-addon2" onclick="addnandu()"></span>
+            </div>
+        </li>
+        {{each res}}
+        <li class="list-group-item">
+            <div style="width: 100%; overflow: hidden;">
+                <div style="float: left;max-width:75%" id='nandutext'>{{$value.title}}</div>
+                <div style="float: right;">
+                    <div id='nanduxiugai' class="btn-group btn-group-xs" role="group" aria-label="..." data-id='{{$value._id}}'><button type="button" class="btn btn-success">修改</button></div>
+                    <div id='nandudelete' class="btn-group btn-group-xs" role="group" aria-label="..." data-id='{{$value._id}}'><button type="button" class="btn btn-danger">删除</button></div>
+                </div>
+            </div>
+        </li>
+        {{/each}}
+    </script>
+
+
+    <script type="text/html" id="leixingTpl">
+
+        <li class="list-group-item">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="添加分类" aria-describedby="basic-addon2" id='addleixingInp'>
+                <span style="position: relative;top: 0px;" class="input-group-addon glyphicon glyphicon-plus" id="basic-addon2" onclick="addleixing()"></span>
+            </div>
+        </li>
+        {{each res}}
+        <li class="list-group-item">
+            <div style="width: 100%; overflow: hidden;">
+                <div style="float: left;max-width:75%" id='nandutext'>{{$value.title}}</div>
+                <div style="float: right;">
+                    <div id='nanduxiugai' class="btn-group btn-group-xs" role="group" aria-label="..." data-id='{{$value._id}}'><button type="button" class="btn btn-success">修改</button></div>
+                    <div id='leixinglete' class="btn-group btn-group-xs" role="group" aria-label="..." data-id='{{$value._id}}'><button type="button" class="btn btn-danger">删除</button></div>
+                </div>
+            </div>
+        </li>
+        {{/each}}
+
+    </script>
+    <script src="../js/admin-label.js"></script>
+    <script src="../js/admin-head.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+.row {
+    /* background-color: #fff; */
+    margin: 20px auto !important;
+    padding: 10px;
+    /* box-shadow: rgba(0, 0, 0, .1) 0 2px 10px; */
+}
+
+.CodeMirror-scroll {
+    max-height: 300px;
+}
+
+.user-edit {
+    background-color: #fff;
+    /* margin: 20px auto !important; */
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 10px;
+}
+
+.user-edit_right {
+    padding-right: 30px;
+}
+
+@media screen and (max-width: 550px) {
+    /* .user-edit_right {
+        display: none;
+    } */
+    div.col-md-6 {
+        padding-top: 10px;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
