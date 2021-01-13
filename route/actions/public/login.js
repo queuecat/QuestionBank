@@ -1,7 +1,7 @@
 const { Users, validateLogin } = require('../../../model/Users');
 const bcrypt = require('bcryptjs');
 const { pick } = require('../../../tools/tools');
-module.exports = async (req, res) => {
+module.exports = async(req, res) => {
     try {
         // 验证格式
         const { error } = validateLogin(req.fields);

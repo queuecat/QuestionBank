@@ -156,6 +156,7 @@ $('#usersBox').on('click', '#shanchu', function() {
     }
 
 });
+var userData = {};
 // 修改用户信息
 $('#usersBox').on('click', '#xiugai', function() {
     var id = $(this).attr('data-id');
@@ -165,11 +166,15 @@ $('#usersBox').on('click', '#xiugai', function() {
         success: (res) => {
             console.log(res);
             var user = template('userEditTpl', res);
-            $('#formBox').html(user)
+            $('#formBox').html(user);
+            userData = res;
         },
         error: (xhr) => {
             // alert(JSON.parse(xhr.responseText).message);
             $('.info').html(JSON.parse(xhr.responseText).message);
+            if (JSON.parse(xhr.responseText).message == "请您登陆后进行该操作！") {
+                location.reload();
+            }
 
         }
     })
@@ -177,13 +182,30 @@ $('#usersBox').on('click', '#xiugai', function() {
 });
 // 保存修改信息
 $('#formBox').on('submit', '#userEditForm', function() {
-    var formData = $(this).serialize();
+    var formData = {};
+    if (userData.username != $(this).find('input')[0].value) {
+        formData.username = $(this).find('input')[0].value;
+    }
+    if (userData.email != $(this).find('input')[1].value) {
+        formData.email = $(this).find('input')[1].value;
+    }
+    if (userData.avatar != $(this).find('input')[4].value) {
+        formData.avatar = $(this).find('input')[4].value;
+    }
+    formData.password = $(this).find('input')[2].value;
     console.log(formData);
+    var data = "";
+    for (const arr in formData) {
+        data += arr + "=" + formData[arr] + "&";
+    }
+    data = data.substr(0, data.length - 1);
+    data = encodeURI(data);
+    console.log(data);
     var id = $(this).attr('data-id');
     $.ajax({
         type: 'put',
         url: '/admin/users/' + id,
-        data: formData,
+        data: data,
         success: (res) => {
             // $('#thumbnail').val(res[0].cover)
             ajaxreload();

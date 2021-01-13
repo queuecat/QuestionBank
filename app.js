@@ -1,6 +1,6 @@
 const express = require('express');
 const http = require('http');
-const https = require('https');
+// const https = require('https');
 const formidable = require('express-formidable');
 const session = require('express-session');
 const path = require('path');
@@ -10,12 +10,9 @@ require('./model/Users');
 require('./model/connect');
 // create server
 const app = express();
-const httpsOptions = {
-    key: null,
-    cert: null
-};
+
 httpServer = http.createServer(app);
-httpsServer = https.createServer(httpsOptions, app);
+
 
 
 var sessionOptions = {
@@ -31,8 +28,8 @@ if (process.env.NODE_ENV == 'development') {
     // app.use(require('morgan')('dev'));
 } else {
     // 生产环境
-    app.use(require('./middleware/httpsRedirect'));
-    sessionOptions.cookie = { secure: true, maxAge: 1000 * 60 * 60 * 24 }
+    //app.use(require('./middleware/httpsRedirect'));
+    // sessionOptions.cookie = { secure: true, maxAge: 1000 * 60 * 60 * 24 }
 }
 
 // static
@@ -55,9 +52,6 @@ app.use(formidable({
 require('./route')(app);
 
 // listen
-httpServer.listen(3000, () => {
+httpServer.listen(3001, () => {
     console.log(' \033[42;1m Done \033[0m \033[1m Server is listening on port 3000 \033[0m');
-});
-httpsServer.listen(443, () => {
-    console.log(' \033[42;1m Done \033[0m \033[1m Server is listening on port 443 \033[0m');
 });

@@ -1,3 +1,7 @@
+img {
+    object-fit: cover;
+}
+
 .row {
     /* background-color: #fff; */
     margin: 20px auto !important;
