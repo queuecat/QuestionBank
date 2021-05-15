@@ -221,12 +221,17 @@
                 </div>
                 <hr style='border-top: 1px dashed #ccc;'>
                 <div class="article-info" style='float: right;'>
-                    <span class="author action">{{question.author.username}}</span>
-                    <span>发布于{{question.publishDate.split('T')[0]}}</span>
-                    <span class="glyphicon glyphicon-eye-open" style='color:#444;'></span>
-                    <span>{{question.meta.views}}</span>
-                    <span id='questionlike' class="{{liked?'glyphicon glyphicon glyphicon-heart':'glyphicon glyphicon-heart-empty'}}" style="{{liked?'color: orange;cursor: pointer;':'color: #64BF68;cursor: pointer;'}}"></span>
-                    <span>{{question.meta.likes}}</span>
+                    <div>
+                        <span class="author action">{{question.author.username}}</span>
+                        <span>发布于{{question.publishDate.split('T')[0]}}</span>
+                    </div>
+                    
+                    <div style='display: flex;justify-content: flex-end;align-items: center;'>
+                        <span class="glyphicon glyphicon-eye-open" style='color:#444;'></span>
+                        <span>{{question.meta.views}}</span>
+                        <span id='questionlike' class="{{liked?'glyphicon glyphicon glyphicon-heart':'glyphicon glyphicon-heart-empty'}}" style="{{liked?'color: orange;cursor: pointer;':'color: #64BF68;cursor: pointer;'}}"></span>
+                        <span>{{question.meta.likes}}</span>
+                    </div>
 
                 </div>
             </div>
