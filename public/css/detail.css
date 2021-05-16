@@ -318,3 +318,12 @@ a:hover {
 	text-decoration: none;
 	color: #41b146;
 }
+.more-toolbox span {
+	margin-right: 5px;
+}
+.more-toolbox:nth-child(2) {
+	margin-right: 10px;
+}
+.more-toolbox:last-child {
+	margin-right: 0px;
+}
